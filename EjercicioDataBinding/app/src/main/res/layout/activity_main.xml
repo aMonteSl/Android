@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.baloncesto.ScoreViewModel" />
+            type="com.example.ejerciciodatabinding.ScoreViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,18 +17,18 @@
         android:padding="16dp"
         tools:context=".MainActivity">
 
-        <!-- Columna para el Equipo A -->
         <LinearLayout
             android:id="@+id/llTeamA"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:orientation="vertical"
             android:gravity="center"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btnReset"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/llTeamB"
-            app:layout_constraintHorizontal_weight="1">
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintVertical_bias="0.0">
 
             <TextView
                 android:id="@+id/tvTeamAName"
@@ -37,34 +37,35 @@
                 android:text="Equipo A"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="8dp" />
 
+            <!-- Marcador del Equipo A -->
             <TextView
                 android:id="@+id/tvScoreA"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text='@{String.valueOf(viewModel.scoreA)}'
+                android:text="0"
                 android:textSize="48sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginBottom="16dp" />
 
-            <!-- Botones para sumar puntos al Equipo A -->
+            <!-- Botones para el Equipo A -->
             <Button
-                android:id="@+id/btnFreeA"
+                android:id="@+id/btnA1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+1"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="8dp" />
 
             <Button
-                android:id="@+id/btnTwoA"
+                android:id="@+id/btnA2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+2"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="8dp" />
 
             <Button
-                android:id="@+id/btnThreeA"
+                android:id="@+id/btnA3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+3" />
@@ -74,15 +75,17 @@
         <LinearLayout
             android:id="@+id/llTeamB"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:orientation="vertical"
             android:gravity="center"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btnReset"
             app:layout_constraintStart_toEndOf="@+id/llTeamA"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_weight="1">
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintVertical_bias="0.0">
 
+            <!-- Nombre del Equipo B -->
             <TextView
                 android:id="@+id/tvTeamBName"
                 android:layout_width="wrap_content"
@@ -90,8 +93,9 @@
                 android:text="Equipo B"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="8dp" />
 
+            <!-- Marcador del Equipo B, enlazado directamente al LiveData del ViewModel -->
             <TextView
                 android:id="@+id/tvScoreB"
                 android:layout_width="wrap_content"
@@ -99,31 +103,31 @@
                 android:text='@{String.valueOf(viewModel.scoreB)}'
                 android:textSize="48sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginBottom="16dp" />
 
-            <!-- Botones para sumar puntos al Equipo B -->
+            <!-- Botones para el Equipo B -->
             <Button
-                android:id="@+id/btnFreeB"
+                android:id="@+id/btnB1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+1"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="8dp" />
 
             <Button
-                android:id="@+id/btnTwoB"
+                android:id="@+id/btnB2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+2"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="8dp" />
 
             <Button
-                android:id="@+id/btnThreeB"
+                android:id="@+id/btnB3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+3" />
         </LinearLayout>
 
-        <!-- Botón Reset en la parte inferior centrado -->
+        <!-- Botón Reset, centrado en la parte inferior -->
         <Button
             android:id="@+id/btnReset"
             android:layout_width="wrap_content"
