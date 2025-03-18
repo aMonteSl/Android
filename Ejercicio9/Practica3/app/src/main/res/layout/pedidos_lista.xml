@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/itemPedido"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:gravity="center_vertical">
+
+    <!-- Descripción: Nombre del producto y cantidad -->
+    <TextView
+        android:id="@+id/tvPedidoDescripcion"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="@string/tvPedidoDescripcion"
+        android:textSize="16sp" />
+
+    <!-- Precio total: Pegado al margen derecho -->
+    <TextView
+        android:id="@+id/tvPedidoTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tvPedidoTotal"
+        android:textSize="16sp" />
+</LinearLayout>

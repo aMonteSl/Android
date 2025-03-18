@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="outer">#36494E</color>
+    <color name="uranian">#A9CEF4</color>
+    <color name="air">#7EA0B7</color>
+    <color name="payne">#597081</color>
+</resources>

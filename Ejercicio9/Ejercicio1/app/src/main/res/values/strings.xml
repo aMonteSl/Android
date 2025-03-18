@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Ejercicio1</string>
+    <string name="textoArriba">TextView</string>
+    <string name="checkbox">CheckBox</string>
+    <string name="switch_button">Switch</string>
+    <string name="boton_1_fila_1_peso_2">BOTON 1 FILA 1 PESO 2</string>
+    <string name="boton_2_fila_1_peso_1">BOTON 2 FILA 1 PESO 1</string>
+    <string name="boton_1_f2">BOTON 1 F2</string>
+    <string name="boton_2_f2">BOTON 2 F2</string>
+    <string name="boton_3_f2">BOTON 3 F2</string>
+    <string name="boton_1_f3">BOTON 1 F3</string>
+    <string name="boton_2_f3">BOTON 2 F3</string>
+
+</resources>

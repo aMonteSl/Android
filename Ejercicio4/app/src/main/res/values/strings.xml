@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Ejercicio4</string>
+    <string name="button">Button</string>
+    <string name="textview">TextView</string>
+    <string name="open_url">Open URL</string>
+    <string name="enter_url">Enter URL</string>
+</resources>

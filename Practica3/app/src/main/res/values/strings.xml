@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Practica3</string>
+    <string name="btn_entrantes">Entrantes</string>
+    <string name="btn_principales">Principales</string>
+    <string name="btn_bebidas">Bebidas</string>
+    <string name="botonPedido">Realizar Pedido</string>
+    <string name="tituloSubMenu">TextView</string>
+    <string name="sv_productos_description">Contenedor de productos</string>
+    <string name="desc_btn_menos">Menos</string>
+    <string name="desc_btn_mas">Más</string>
+    <string name="tvPrecio">$10.00</string>
+    <string name="tvCantidad">0</string>
+    <string name="tvNombreProducto">Nombre del Producto</string>
+    <string name="txtpedido">No hay nada en tu pedido todavía</string>
+    <string name="tvPedidoDescripcion">Nachos x2</string>
+    <string name="tvPedidoTotal">11.98€</string>
+
+</resources>

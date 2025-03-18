@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Practica4</string>
+    <string name="navigation_drawer_open">Abrir menú</string>
+    <string name="navigation_drawer_close">Cerrar menú</string>
+    <string name="crear_contacto">CREAR CONTACTO</string>
+    <string name="cumplea_os">Cumpleaños</string>
+    <string name="email">Email</string>
+    <string name="nombre">Nombre</string>
+    <string name="tel_fono">Teléfono</string>
+    <string name="email2">Email:</string>
+    <string name="cumplea_os2">Cumpleaños:</string>
+    <string name="nombre2">Nombre:</string>
+    <string name="tel_fono2">Teléfono:</string>
+    <string name="crear_contacto_FAB">Crear contacto</string>
+    <string name="nombre_l">Nombre</string>
+    <string name="tel_fono_l">Teléfono</string>
+    <string name="item_5">Item 5</string>
+    <string name="item_4">Item 4</string>
+    <string name="item_1">Item 1</string>
+    <string name="item_2">Item 2</string>
+    <string name="item_3">Item 3</string>
+
+    <style name="MyPopupMenu" parent="ThemeOverlay.AppCompat.Light">
+        <!-- Cambia el color del texto a blanco -->
+        <item name="android:textColorPrimary">@color/white</item>
+        <!-- Cambia el fondo del popup al color brown, por ejemplo -->
+        <item name="android:popupBackground">@color/brown</item>
+    </style>
+
+</resources>

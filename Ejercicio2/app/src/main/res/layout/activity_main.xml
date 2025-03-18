@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Arriba"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="5dp"
+        android:background="@color/mint_green"
+        app:layout_constraintHeight_default="spread"
+        app:layout_constraintBottom_toTopOf="@+id/Medio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/Importe"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:hint="@string/importe"
+            android:textColorHint="@color/dark_slate_gray"
+            android:textColor="@color/dark_slate_gray"
+            android:inputType="numberDecimal"
+            android:background="@color/mint_green"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="16dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Medio"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/mint_green"
+        app:layout_constraintHeight_default="spread"
+        app:layout_constraintBottom_toTopOf="@id/Abajo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Arriba">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.17" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+
+        <RadioGroup
+            android:id="@+id/radioGroupLeft"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+            android:padding="16dp">
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/columnas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="radioEurosLeft,radioDolaresLeft,radioLibrasLeft,radioEurosRight,radioDolaresRight,radioLibrasRight"/>
+
+            <RadioButton
+                android:id="@+id/radioEurosLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/euros2"
+                android:textColor="@color/dark_slate_gray" />
+
+            <RadioButton
+                android:id="@+id/radioDolaresLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dolares"
+                android:textColor="@color/dark_slate_gray"/>
+
+            <RadioButton
+                android:id="@+id/radioLibrasLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/libras"
+                android:textColor="@color/dark_slate_gray"/>
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/radioGroupRight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guidelineRight"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="16dp">
+
+            <RadioButton
+                android:id="@+id/radioEurosRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/euros"
+                android:textColor="@color/dark_slate_gray"/>
+
+            <RadioButton
+                android:id="@+id/radioDolaresRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dolares2"
+                android:textColor="@color/dark_slate_gray"/>
+
+            <RadioButton
+                android:id="@+id/radioLibrasRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/libras2"
+                android:textColor="@color/dark_slate_gray"/>
+        </RadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Abajo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:autofillHints=""
+        android:background="@color/mint_green"
+        app:layout_constraintHeight_default="spread"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Medio">
+
+        <Button
+            android:id="@+id/buttonConvertir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/dark_slate_gray"
+            android:padding="16dp"
+            android:text="@string/convertir"
+            android:textColor="@color/mint_green"
+            app:layout_constraintBottom_toTopOf="@+id/resultado"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/resultado"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/resultado"
+            android:textColorHint="@color/dark_slate_gray"
+            android:textColor="@color/dark_slate_gray"
+            android:inputType="none"
+            android:background="@color/mint_green"
+            android:enabled="false"
+            app:layout_constraintTop_toBottomOf="@+id/buttonConvertir"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="16dp"/>
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/groupResultado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="resultado"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
