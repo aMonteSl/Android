@@ -4,6 +4,17 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
+<<<<<<< HEAD
+=======
+        <DropdownSelection timestamp="2025-03-12T08:43:26.173767994Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="PhysicalDevice" identifier="serial=79abdb34" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
+>>>>>>> ddefecd (CosasDeCasa)
       </SelectionState>
     </selectionStates>
   </component>

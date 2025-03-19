@@ -1,0 +1,153 @@
+1) Tenemos una aplicacion que muestra una lista de las series que estamos viendo en la actualidad. Para añadir una serie nueva a dicha lista, teneemos un boton flotante que lanza una segunda actividad dodne se nos muestra un buscador para encontrarla.
+
+Si seleccionamos alguna y confirmamos, esta segunda actividad devuelve un objeto con la informacion  de la seria, que añade a la veriable que almacena la lista en la actividad principal. En este caso, el adaptador del RecyvlerView:
+
+a) LLama a onBidndViewHolder para actualizar la fila de la serie recien añadida
+b) Incrementa en uno la variable size que representa el tamañp de su lista de datos
+c) No hace nada a menos que se le notifique
+d) Llama a onCreateviewHolder para generar la dila de la serie recien añadida
+
+Respuesta: c)
+El adaptador de un RecyclerView no actualiza automáticamente la vista cuando se modifica la lista de datos. Para que la nueva serie aparezca en la interfaz, es necesario notificar al adaptador (por ejemplo, usando métodos como notifyItemInserted(position) o notifyDataSetChanged()). Solo entonces se invocarán los métodos correspondientes para actualizar la visualización de los ítems (como onBindViewHolder o, si es necesario, onCreateViewHolder).
+
+2) Queremos implementar un Adaptador que provea a nuestro RecyclerView de soporte para tres tipos de acciones sobre los elementos que se muestran: Click, LongClick, Swipe. Las operaciones que se lanzan cuando se dan a los dos primeros deben de ser configurables desde el constructor. Sin embargo, la opoeracion a realizar cuand succede el tercer tipo de evneto (onSwipe). esa definida en el propio adaptador y no se puede modificar. 
+
+Sabiendo esto ¿Cuantas interfaces del tipo View.On<Evento>Listener debe implementar el adaptador?
+
+a)0
+b)1
+c)2
+d)3
+
+Respuesta: c) 2
+Explicación:
+
+Para soportar el Click y el LongClick, el adaptador debe implementar las interfaces correspondientes, es decir, View.OnClickListener y View.OnLongClickListener. Estas operaciones se configuran desde el constructor, permitiendo personalizar su comportamiento.
+
+En el caso del Swipe, la operación se define internamente en el adaptador y no se espera que el adaptador implemente una interfaz del tipo View.OnSwipeListener (ya que tal interfaz no existe en Android). Por lo tanto, no se requiere que el adaptador implemente una interfaz adicional para manejar el swipe.
+
+Así que, en total, el adaptador debe implementar dos interfaces de tipo View.On<Evento>Listener (Click y LongClick).
+
+3) ¿Donde se definen los item de un menu?
+
+a) En el metodo onCreateOPtionsMEnu, mediante el metodo inflate del objeto menuinflater, al que se le pasa el array de items del menu correspondiente
+b) Depende del lugar donde se muestre el menu. Para un menu de panel lateral de navegaicion,  agrega una etiqueta <item> en cada elemento de menu del arichivo menu.xml en la carpeta res > drawer. Para el menu de opcions, agrega una etiqueta <item> en cada elemento del menu del archivo menu.xml en la carpeta res > options
+c) En un archivo menu_name.xml de la carpeta res > menu, agrega una etiqueta <item> para cada elemento del menu. Crea archivos xml separados para cada menu independiente
+d) En el archivo de diseño del fragmento o la actividad que muesta el menu, agrega una etiqueta <menu> que contengan etiquetas <item> para cada elemento
+
+Respuesta: c)
+Explicación:
+Los ítems de un menú se definen en archivos XML separados, que se colocan en la carpeta res/menu. En cada uno de estos archivos, se utiliza la etiqueta raíz <menu> y dentro de ella se incluyen etiquetas <item> para cada opción del menú. De esta forma, se pueden crear archivos XML independientes para cada menú que necesites en la aplicación.
+
+4) ¿Que atributo de una View nos permite dotar de mayor accesbilidad a nuestra aplicacion proporcionaod un texto descriptivo de su contenido o accion que sea capaz de leer TalkBack?
+
+a) accessibilityText
+b) accessibilityDescription
+c) contentText
+d) contentDescription
+
+Respuesta: d) contentDescription.
+Explicación:
+El atributo android:contentDescription permite proporcionar una descripción textual de una vista para que tecnologías de asistencia, como TalkBack, puedan leerla y ofrecer una mejor accesibilidad. Esto ayuda a que los usuarios con discapacidad visual comprendan el contenido o la acción de esa vista.
+
+5) ¿Que hay que hacer para desplegar el Navigation Drawer de nuestra actividad desde la barra superior de la aplicacion?
+
+a) Se debe activar el boton de navegacion hacia arriba, que es el que lo abre
+b) Se debe llamar al metodo open del elemento DrawerLayout
+c) Se debe llamar al metodo open del elemento NavigationView
+d) No se puede abrir desde la toolbar, solo deslizando el desdo de izquierda a detecha de la pantalla
+
+Respuesta: b) Se debe llamar al método open del elemento DrawerLayout.
+
+Explicación:
+El Navigation Drawer se gestiona a través del contenedor DrawerLayout. Para desplegarlo desde la barra superior (normalmente mediante el botón "hamburguesa"), se configura un ActionBarDrawerToggle que, al ser pulsado, llama internamente a un método como openDrawer(GravityCompat.START) sobre el DrawerLayout para abrir el menú lateral. No es el botón de "navegación hacia arriba" el que lo abre, ni se llama a un método del NavigationView.
+
+6) En una aplicacion con dos actividades, MainActivity:
+
+data class Persona(val nombre: String, val edad: Int): Serializable
+
+Classs MainActivity: AppCompatActivity() {
+override fun onCreate(savedInstance: Bundle?) {
+super.onCreate(savedIntanceState)
+setContentView(R.layout.activity_main)
+var pers = Persona("noa", 46)
+vat indent = Indent(this, SecondaryActivity::class.java)
+indent.putExtra("persona", pers)
+startActivity(indent)
+}
+}
+
+y SecondaryActivity:
+
+class SecundaryActivity : AppCompatActivity() {
+override fun onCrete(savedInstanceState: Bundle?) {
+super.onCreate(savedInstanceState)
+setContentView(R.layout.activity_secondary)
+
+var p = indent.getSerializableExtra("persona")
+Log.d("SECUNDARIA", p.nombre)
+}
+}
+
+Que afirmacion es correcta?
+
+a) La aplicacion no compila porque la variable p no es de tipo persona
+b) La aplicacion compila pero muestra "null" en el LOgCat porque el identificador utilizado para recuperar el extra no es el mismo que se envia desde la actividad principal
+c) La aplicacion compula y muestra el mensaje "Noa" en el Logcat
+d) La aplicacion no compila porque no se pueden enviar tipos propios como extra en un indent
+
+Respuesta: c) La aplicación compila y muestra el mensaje "Noa" en el Logcat.
+
+Explicación:
+
+La clase Persona implementa Serializable, lo que permite enviarla a través de un Intent.
+En la MainActivity se crea una instancia de Persona con el nombre "noa" y se la añade al Intent usando el identificador "persona".
+
+7) Si estamos usndo la aplicacion que acabamos de desarollar y clikamos en la notificacion de Whatsapp para ver el ultimo mensaje recibido, en la actividad de nuestra aplicacion se ejecuta el callback:
+
+a) onPause
+b) onRestart
+c) onStop
+d) onDestroy
+
+Respuesta: a) onPause.
+
+Explicación:
+
+Cuando nuestra aplicación está en primer plano y se hace clic en una notificación de otra aplicación (en este caso, WhatsApp), la actividad actual pierde el foco y se pone en pausa, por lo que se ejecuta el método onPause(). Si la nueva actividad cubre completamente nuestra aplicación, posteriormente se invoca onStop(), pero el primer callback que se activa es onPause().
+
+8) El diseño de una actividad, formado por 5 ConstraintLayouts (el raiz, el verde, el azul, el amarillo y el rojo) se ven asi en vertical:
+El verde ocupa todo el espacio de la pantalla, el azul esta en laparte superior ocupando todo el ancho horizontal y en vertical 1/3 de toda la pantalla, el amarillo ocupa 3/4del ancho horizontal y otro 1/3 del vertical . Y el rojo el ancho 1/4 del ancho y el otro 1/3 restante del vetical.
+
+a) El verde tiene la altura del padre y la anchura del contenido. Los tres de dentro forman una cadena vfertical con pesos y sus alturas fijas.
+b) El verde tiene la altura del padre y la anchura fija. Los tres de dentro forman una cadena horizontal con pesos, y sus alturas son fijas.
+c) El verde tiene la altura del padre y la anchura fija. los tres de dentro tienen alturas y anchuras fijas.
+d) El verde tiene altura del padre y anchura del contenido. Los tres de dentro tiene alturas fijas y forman una cadena horizontal con pesos
+
+Respuesta: a) El verde tiene la altura del padre y la anchura del contenido. Los tres de dentro forman una cadena vertical con pesos y sus alturas fijas
+
+9) El ViewHoldar de un RecyclerView es el encargado de:
+
+a) Organizar los elementos de las listas en filas, columnas, cuadricula o un diseño
+b) Recoger los atributos del elemento que se quiere mostrar
+c) Asociar los datos del elemento a mostrar con los elemenos de diseño de la fila correspondiente
+d) Representar y manipular la visa de cada elemento a mostrar
+
+Respuesta: d) Representar y manipular la vista de cada elemento a mostrar.
+
+Explicación:
+
+ViewHolder: Es una clase que contiene las referencias a las vistas (por ejemplo, TextView, ImageView, etc.) de cada elemento de la lista y permite manipularlas. En otras palabras, describe y gestiona la vista de cada ítem.
+
+LayoutManager: Se encarga de organizar los elementos en filas, columnas o en una cuadrícula (opción a).
+
+Adapter: Es el responsable de asociar los datos (modelo) con la vista (elementos de diseño) en cada ítem del RecyclerView (opción c). El Adapter, dentro de onBindViewHolder(), utiliza el ViewHolder para actualizar las vistas con la información correspondiente.
+
+10) Una actividad en estado Started:
+
+a) Sabemos que ha transicionado necesariamente desde el estado Created
+b) Puede transicionar a Resumed o Stopped
+c) Permite interacciones del usuario
+d) Puede estar parcialmente visible
+
+Respuesta: b) Aunque las otras opciones pueden estar medio bien 
