@@ -15,7 +15,7 @@ class TaskEditActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_task_edit)
 
-        // Si se pasa una tarea, rellenar los campos para editar
+        // Si se recibe una tarea, rellenamos los campos para editarla
         val task = intent.getSerializableExtra("task") as? Task
         val position = intent.getIntExtra("position", -1)
         if (task != null) {
@@ -36,7 +36,6 @@ class TaskEditActivity : AppCompatActivity() {
             val newTask = Task(title, description, completed)
             val resultIntent = intent
             resultIntent.putExtra("task", newTask)
-            // Si se está editando, incluir la posición
             if (position != -1) {
                 resultIntent.putExtra("position", position)
             }

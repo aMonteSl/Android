@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
@@ -46,7 +45,7 @@ class MainActivity : AppCompatActivity(), TaskAdapter.OnTaskClickListener {
         binding.rvTasks.layoutManager = LinearLayoutManager(this)
         binding.rvTasks.adapter = adapter
 
-        // Observar los cambios en la lista de tareas para actualizar el adaptador
+        // Observar cambios en la lista de tareas para actualizar el adaptador
         taskViewModel.tasks.observe(this) { tasks ->
             adapter.updateTasks(tasks)
         }
@@ -58,7 +57,7 @@ class MainActivity : AppCompatActivity(), TaskAdapter.OnTaskClickListener {
         }
     }
 
-    // Al pulsar en el título de una tarea, se lanza la actividad para editarla.
+    // Al pulsar el título de una tarea se lanza la actividad para editarla
     override fun onTaskTitleClicked(task: Task, position: Int) {
         val intent = Intent(this, TaskEditActivity::class.java)
         intent.putExtra("task", task)
@@ -66,7 +65,7 @@ class MainActivity : AppCompatActivity(), TaskAdapter.OnTaskClickListener {
         taskEditLauncher.launch(intent)
     }
 
-    // Al pulsar en la checkbox, se cambia el estado de la tarea.
+    // Al pulsar la checkbox se cambia el estado de la tarea
     override fun onTaskCheckboxClicked(task: Task, position: Int) {
         taskViewModel.toggleTaskCompletion(position)
     }

@@ -5,14 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class TaskViewModel : ViewModel() {
-    // Usamos una lista mutable para facilitar las actualizaciones
+
     private val _tasks = MutableLiveData<MutableList<Task>>(mutableListOf())
     val tasks: LiveData<MutableList<Task>>
         get() = _tasks
 
     fun addTask(task: Task) {
         _tasks.value?.add(task)
-        // Notificamos el cambio asignando de nuevo la lista
+        // Forzamos la notificación de cambio
         _tasks.value = _tasks.value
     }
 

@@ -26,15 +26,12 @@ class TaskAdapter(
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         val task = tasks[position]
         with(holder.binding) {
-            // Se muestra el título y se marca la checkbox según el estado de la tarea
             tvTaskTitle.text = task.title
             cbCompleted.isChecked = task.completed
 
-            // Al pulsar sobre el título se lanza la edición
             tvTaskTitle.setOnClickListener {
                 listener.onTaskTitleClicked(task, position)
             }
-            // Al pulsar sobre la checkbox se cambia el estado
             cbCompleted.setOnClickListener {
                 listener.onTaskCheckboxClicked(task, position)
             }
